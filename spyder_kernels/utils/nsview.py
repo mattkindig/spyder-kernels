@@ -152,7 +152,9 @@ def is_namedtuple(obj):
     collections.namedtuple() does not define a class as a subclass of namedtuple, so 'instance(x, namedtuple)' does not work.
     Instead, we check that the variable is an instance of a tuple, and has a _fields attribute as a tuple of strings.
     """
-    return isinstance(obj, tuple) and hasattr(obj, '_fields') and all(isinstance(f, str) for f in obj._fields)
+    return (isinstance(obj, tuple) and hasattr(obj, '_fields') 
+            and all(isinstance(f, str) for f in obj._fields)
+    )
 
 #==============================================================================
 # Date and datetime objects support
